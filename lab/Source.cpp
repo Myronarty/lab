@@ -64,3 +64,7 @@ int Gorn(int a, int b, int n)
 	//cout << k;
 	return k;
 }
+int main()
+{
+	cout << Gorn(5, 10, 17);
+}
