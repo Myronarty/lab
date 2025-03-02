@@ -22,7 +22,7 @@ jobs:
         run: ctest --test-dir build
 
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: build/test-results/*.xml
