@@ -24,6 +24,8 @@ jobs:
         run: |
           ctest --test-dir build --output-on-failure
 
+      - name: List contents of build directory
+        run: ls -R build/
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
