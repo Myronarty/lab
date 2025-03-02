@@ -19,6 +19,11 @@ jobs:
       - name: Build
         run: cmake --build build
 
+      - name: Run tests and generate XML result
+        run: |
+          ctest --test-dir build --output-on-failure
+          ctest --test-dir build --output-on-failure -T Test --gtest_output=xml:build/test-results/test_results.xml
+
       - name: Run tests
         run: ctest --test-dir build
 
