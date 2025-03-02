@@ -1,18 +1,24 @@
+name: C++ CI/CD Pipeline
 
-name: C++ Tests
-
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install dependencies
         run: sudo apt update && sudo apt install -y cmake g++ googletest
-      
+
       - name: Configure CMake
         run: cmake -B build -S lab
 
@@ -24,11 +30,11 @@ jobs:
           ctest --test-dir build --output-on-failure
           ctest --test-dir build --output-on-failure -T Test --gtest_output=xml:build/test-results/test_results.xml
 
-      - name: Run tests
-        run: ctest --test-dir build
+      - name: List test results
+        run: ls -R build/test-results/
 
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: build/test-results/*.xml
