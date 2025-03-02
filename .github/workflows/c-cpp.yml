@@ -20,3 +20,9 @@ jobs:
 
       - name: Run tests
         run: ctest --test-dir build
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: build/test-results/*.xml
