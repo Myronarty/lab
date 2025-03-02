@@ -29,7 +29,7 @@ vector<int> v(int a)
 		if (b - pow(2, m - i) >= 0)
 		{
 			h.push_back(1);
-			b = b - pow(2, m - i);
+			 b = b - pow(2, m - i);
 		}
 		else
 		{
