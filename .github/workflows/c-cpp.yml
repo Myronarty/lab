@@ -24,7 +24,7 @@ jobs:
         run: cmake --build build
 
       - name: Run tests and generate XML result
-         run: |
+        run: |
           ctest --test-dir build --output-on-failure
 
       - name: List build/test-results contents
