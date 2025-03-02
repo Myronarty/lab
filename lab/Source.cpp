@@ -67,5 +67,5 @@ int Gorn(int a, int b, int n)
 
 int main()
 {
-	cout << Gorn(5, 10, 17);
+	cout << Gorn(5, 10, 17); // just for test
 }
