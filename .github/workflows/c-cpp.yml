@@ -13,7 +13,7 @@ jobs:
         run: sudo apt update && sudo apt install -y cmake g++ googletest
       
       - name: Configure CMake
-        run: cmake -B build
+        run: cmake -B build -S lab
 
       - name: Build
         run: cmake --build build
