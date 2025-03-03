@@ -1,8 +1,5 @@
-#include <iostream>
-#include <cmath>
-#include <vector>
+#include "Header.h"
 
-using namespace std;
 
 int Cayley_table(int a)
 {
@@ -67,5 +64,5 @@ int Gorn(int a, int b, int n)
 
 int main()
 {
-	cout << Gorn(5, 10, 17); // just for test
+	cout << Gorn(5, 16, 17); // just for test
 }
