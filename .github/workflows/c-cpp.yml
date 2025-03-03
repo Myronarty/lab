@@ -1,40 +1,38 @@
 name: C++ CI/CD Pipeline
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
+
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: sudo apt update && sudo apt install -y cmake g++ googletest
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y g++
 
-      - name: Configure CMake
-        run: cmake -B build -S lab
 
-      - name: Build
-        run: cmake --build build
+    - name: Upload binary as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiled-binary
+        path: main
 
-      - name: Run tests and generate XML result
-        run: |
-          ctest --test-dir build --output-on-failure
-          ctest --test-dir build --output-on-failure -T Test --gtest_output=xml:build/test-results/test_results.xml
+  test:
+    runs-on: ubuntu-latest
+    needs: build
 
-      - name: List test results
-        run: ls -R build/test-results/
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: build/test-results/*.xml
+    - name: Download compiled binary
+      uses: actions/download-artifact@v4
+      with:
+        name: compiled-binary
+
+    - name: Run the program
+      run: chmod +x main && ./main
