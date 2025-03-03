@@ -27,3 +27,8 @@ int test1()
 		return 1;
 	}
 }
+
+int main()
+{
+	cout << test1(); // just for test
+}

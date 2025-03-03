@@ -61,8 +61,3 @@ int Gorn(int a, int b, int n)
 	//cout << k;
 	return k;
 }
-
-int main()
-{
-	//cout << test1(); // just for test
-}
