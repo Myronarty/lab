@@ -28,5 +28,5 @@ jobs:
       - name: Test artifact
         uses: actions/upload-artifact@v4
         with:
-          neme: results
+          name: results
           path: results/results.cpp
