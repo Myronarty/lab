@@ -30,5 +30,13 @@ int test1()
 
 int main()
 {
-	cout << test1(); // just for test
+	std::ofstream file("test.txt");
+
+	file << test1() << endl;
+
+	file << "Ğåçóëüòàò òåñòó 1." << std::endl;
+
+	file.close();
+
+	return 0;
 }
